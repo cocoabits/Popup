@@ -8,6 +8,8 @@
 
 #define SEARCH_INSET 10
 
+#pragma mark -
+
 @implementation BackgroundView
 
 @synthesize arrowX = _arrowX;

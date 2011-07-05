@@ -41,7 +41,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
-    // Remove the icon from the menu bar
+    // Explicitly remove the icon from the menu bar
     self.menubarController = nil;
     
     return NSTerminateNow;

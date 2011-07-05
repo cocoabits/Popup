@@ -34,6 +34,5 @@
 - (void)openPanel;
 - (void)closePanel;
 - (NSRect)statusRectForWindow:(NSWindow *)window;
-- (void)resetPanelHeight;
 
 @end

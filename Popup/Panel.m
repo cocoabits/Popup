@@ -4,12 +4,7 @@
 
 - (BOOL)canBecomeKeyWindow;
 {
-    return YES;
-}
-
-- (void)flagsChanged:(NSEvent *)theEvent;
-{
-    [[self contentView] setNeedsDisplay:YES];
+    return YES; // Allow Search field to become the first responder
 }
 
 @end

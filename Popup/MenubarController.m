@@ -9,7 +9,8 @@
 
 - (id)init
 {
-    if ((self = [super init]))
+    self = [super init];
+    if (self != nil)
     {
         // Install status item into the menu bar
         NSStatusItem *statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH];
@@ -33,8 +34,7 @@
 
 - (NSStatusItem *)statusItem
 {
-    NSStatusItem *item = self.statusItemView.statusItem;
-    return item;
+    return self.statusItemView.statusItem;
 }
 
 #pragma mark -

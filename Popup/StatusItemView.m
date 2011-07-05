@@ -16,7 +16,9 @@
     CGFloat itemWidth = [statusItem length];
     CGFloat itemHeight = [[NSStatusBar systemStatusBar] thickness];
     NSRect itemRect = NSMakeRect(0.0, 0.0, itemWidth, itemHeight);
-    if ((self = [super initWithFrame:itemRect]))
+    self = [super initWithFrame:itemRect];
+    
+    if (self != nil)
     {
         _statusItem = [statusItem retain];
         _statusItem.view = self;
@@ -29,6 +31,7 @@
     [_statusItem release];
     [_image release];
     [_alternateImage release];
+    
     [super dealloc];
 }
 
@@ -37,6 +40,7 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
+    
     NSImage *icon = self.isHighlighted ? self.alternateImage : self.image;
     NSSize iconSize = [icon size];
     NSRect bounds = self.bounds;
@@ -64,6 +68,8 @@
     [self setNeedsDisplay:YES];
 }
 
+#pragma mark -
+
 - (void)setImage:(NSImage *)newImage
 {
     [newImage retain];
@@ -80,6 +86,8 @@
     if (self.isHighlighted)
         [self setNeedsDisplay:YES];
 }
+
+#pragma mark -
 
 - (NSRect)globalRect
 {

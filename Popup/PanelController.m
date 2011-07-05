@@ -26,7 +26,7 @@
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
 {
     self = [super initWithWindowNibName:@"Panel"];
-    if (self)
+    if (self != nil)
     {
         _delegate = delegate;
     }
@@ -53,9 +53,12 @@
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
     
-    [self resetPanelHeight];
+    // Resize panel
+    NSRect panelRect = [[self window] frame];
+    panelRect.size.height = POPUP_HEIGHT;
+    [[self window] setFrame:panelRect display:NO];
     
-    // Track search results
+    // Follow search string
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
 }
 
@@ -245,13 +248,6 @@
         
         [self close];
     });
-}
-
-- (void)resetPanelHeight
-{
-    NSRect panelRect = [[self window] frame];
-    panelRect.size.height = POPUP_HEIGHT;
-    [[self window] setFrame:panelRect display:NO];
 }
 
 @end
