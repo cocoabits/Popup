@@ -235,6 +235,7 @@
     [NSAnimationContext endGrouping];
     
     [panel performSelector:@selector(makeFirstResponder:) withObject:self.searchField afterDelay:openDuration];
+    [NSApp unhide]; // urgently needed for current main window
 }
 
 - (void)closePanel
