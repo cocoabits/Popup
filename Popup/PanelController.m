@@ -48,7 +48,6 @@
     // Make a fully skinned panel
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:YES];
-    [panel setStyleMask:[panel styleMask] ^ NSTitledWindowMask];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
