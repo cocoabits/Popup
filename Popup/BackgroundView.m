@@ -1,12 +1,12 @@
 #import "BackgroundView.h"
 
-#define FILL_OPACITY .9
-#define STROKE_OPACITY .8
+#define FILL_OPACITY 0.9f
+#define STROKE_OPACITY 1.0f
 
-#define LINE_THICKNESS 1
-#define CORNER_RADIUS 6
+#define LINE_THICKNESS 1.0f
+#define CORNER_RADIUS 6.0f
 
-#define SEARCH_INSET 10
+#define SEARCH_INSET 10.0f
 
 #pragma mark -
 
@@ -59,7 +59,7 @@
     [clip addClip];
     
     [path setLineWidth:LINE_THICKNESS * 2];
-    [[NSColor colorWithDeviceWhite:0.5 alpha:STROKE_OPACITY] setStroke];
+    [[NSColor whiteColor] setStroke];
     [path stroke];
     
     [NSGraphicsContext restoreGraphicsState];
