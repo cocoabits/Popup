@@ -8,17 +8,6 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark -
 
-- (void)dealloc
-{
-    [_menubarController release];
-    [_panelController removeObserver:self forKeyPath:@"hasActivePanel"];
-    [_panelController release];
-    
-    [super dealloc];
-}
-
-#pragma mark -
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == kContextActivePanel)
@@ -36,7 +25,7 @@ void *kContextActivePanel = &kContextActivePanel;
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     // Install icon into the menu bar
-    [self.menubarController = [[MenubarController alloc] init] release];
+    self.menubarController = [[MenubarController alloc] init];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

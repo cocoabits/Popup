@@ -16,10 +16,10 @@
 @interface PanelController : NSWindowController <NSWindowDelegate>
 {
     BOOL _hasActivePanel;
-    BackgroundView *_backgroundView;
+    __unsafe_unretained BackgroundView *_backgroundView;
     id<PanelControllerDelegate> _delegate;
-    NSSearchField *_searchField;
-    NSTextField *_textField;
+    __unsafe_unretained NSSearchField *_searchField;
+    __unsafe_unretained NSTextField *_textField;
 }
 
 @property (assign) IBOutlet BackgroundView *backgroundView;

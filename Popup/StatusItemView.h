@@ -5,7 +5,7 @@
     NSStatusItem *_statusItem;
     BOOL _isHighlighted;
     SEL _action;
-    id _target;
+    __unsafe_unretained id _target;
 }
 
 - (id)initWithStatusItem:(NSStatusItem *)statusItem;
