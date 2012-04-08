@@ -16,18 +16,18 @@
 @interface PanelController : NSWindowController <NSWindowDelegate>
 {
     BOOL _hasActivePanel;
-    BackgroundView *_backgroundView;
-    id<PanelControllerDelegate> _delegate;
-    NSSearchField *_searchField;
-    NSTextField *_textField;
+    __unsafe_unretained BackgroundView *_backgroundView;
+    __unsafe_unretained id<PanelControllerDelegate> _delegate;
+    __unsafe_unretained NSSearchField *_searchField;
+    __unsafe_unretained NSTextField *_textField;
 }
 
-@property (assign) IBOutlet BackgroundView *backgroundView;
-@property (assign) IBOutlet NSSearchField *searchField;
-@property (assign) IBOutlet NSTextField *textField;
+@property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
+@property (nonatomic, unsafe_unretained) IBOutlet NSSearchField *searchField;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *textField;
 
-@property (nonatomic, assign) BOOL hasActivePanel;
-@property (nonatomic, readonly) id<PanelControllerDelegate> delegate;
+@property (nonatomic) BOOL hasActivePanel;
+@property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 

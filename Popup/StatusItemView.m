@@ -20,20 +20,12 @@
     
     if (self != nil)
     {
-        _statusItem = [statusItem retain];
+        _statusItem = statusItem;
         _statusItem.view = self;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [_statusItem release];
-    [_image release];
-    [_alternateImage release];
-    
-    [super dealloc];
-}
 
 #pragma mark -
 
@@ -72,19 +64,20 @@
 
 - (void)setImage:(NSImage *)newImage
 {
-    [newImage retain];
-    [_image release];
-    _image = newImage;
-    [self setNeedsDisplay:YES];
+    if (_image != newImage) {
+        _image = newImage;
+        [self setNeedsDisplay:YES];
+    }
 }
 
 - (void)setAlternateImage:(NSImage *)newImage
 {
-    [newImage retain];
-    [_alternateImage release];
-    _alternateImage = newImage;
-    if (self.isHighlighted)
-        [self setNeedsDisplay:YES];
+    if (_alternateImage != newImage) {
+        _alternateImage = newImage;
+        if (self.isHighlighted) {
+            [self setNeedsDisplay:YES];
+        }
+    }
 }
 
 #pragma mark -

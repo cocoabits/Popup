@@ -9,8 +9,8 @@
     StatusItemView *_statusItemView;
 }
 
-@property (nonatomic, assign) BOOL hasActiveIcon;
-@property (nonatomic, readonly) NSStatusItem *statusItem;
-@property (nonatomic, readonly) StatusItemView *statusItemView;
+@property (nonatomic) BOOL hasActiveIcon;
+@property (nonatomic, unsafe_unretained, readonly) NSStatusItem *statusItem;
+@property (nonatomic, strong, readonly) StatusItemView *statusItemView;
 
 @end
