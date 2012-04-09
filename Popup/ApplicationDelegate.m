@@ -1,9 +1,8 @@
 #import "ApplicationDelegate.h"
 
-void *kContextActivePanel = &kContextActivePanel;
-
 @implementation ApplicationDelegate
 
+@synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
 
 #pragma mark -
@@ -15,14 +14,14 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark -
 
+void *kContextActivePanel = &kContextActivePanel;
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (context == kContextActivePanel)
-    {
+    if (context == kContextActivePanel) {
         self.menubarController.hasActiveIcon = self.panelController.hasActivePanel;
     }
-    else
-    {
+    else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -39,7 +38,6 @@ void *kContextActivePanel = &kContextActivePanel;
 {
     // Explicitly remove the icon from the menu bar
     self.menubarController = nil;
-    
     return NSTerminateNow;
 }
 
@@ -55,8 +53,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (PanelController *)panelController
 {
-    if (_panelController == nil)
-    {
+    if (_panelController == nil) {
         _panelController = [[PanelController alloc] initWithDelegate:self];
         [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
     }
