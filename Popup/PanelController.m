@@ -102,7 +102,7 @@
 - (void)windowDidResize:(NSNotification *)notification
 {
     NSWindow *panel = [self window];
-    NSRect statusRect = [self statusRectForWindow:panel];
+    NSRect statusRect = [self statusRectInScreenRect:NULL];
     NSRect panelRect = [panel frame];
     
     CGFloat statusX = roundf(NSMidX(statusRect));
@@ -163,28 +163,32 @@
 
 #pragma mark - Public methods
 
-- (NSRect)statusRectForWindow:(NSWindow *)window
+- (NSRect)statusRectInScreenRect:(NSRect *)outScreenRect
 {
-    NSRect screenRect = [[window screen] frame];
-    NSRect statusRect = NSZeroRect;
-    
     StatusItemView *statusItemView = nil;
-    if ([self.delegate respondsToSelector:@selector(statusItemViewForPanelController:)])
-    {
+    if ([self.delegate respondsToSelector:@selector(statusItemViewForPanelController:)]) {
         statusItemView = [self.delegate statusItemViewForPanelController:self];
     }
     
-    if (statusItemView)
-    {
+    NSRect screenRect = NSZeroRect;
+    NSRect statusRect = NSZeroRect;
+    
+    if (statusItemView) {
+        screenRect = statusItemView.window.screen.frame;
         statusRect = statusItemView.globalRect;
         statusRect.origin.y = NSMinY(statusRect) - NSHeight(statusRect);
     }
-    else
-    {
+    else {
+        screenRect = self.window.screen.frame;
         statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [[NSStatusBar systemStatusBar] thickness]);
         statusRect.origin.x = roundf((NSWidth(screenRect) - NSWidth(statusRect)) / 2);
         statusRect.origin.y = NSHeight(screenRect) - NSHeight(statusRect) * 2;
     }
+    
+    if (outScreenRect) {
+        *outScreenRect = screenRect;
+    }
+    
     return statusRect;
 }
 
@@ -192,8 +196,8 @@
 {
     NSWindow *panel = [self window];
     
-    NSRect screenRect = [[panel screen] frame];
-    NSRect statusRect = [self statusRectForWindow:panel];
+    NSRect screenRect = NSZeroRect;
+    NSRect statusRect = [self statusRectInScreenRect:&screenRect];
     
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;

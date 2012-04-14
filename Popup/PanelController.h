@@ -33,6 +33,6 @@
 
 - (void)openPanel;
 - (void)closePanel;
-- (NSRect)statusRectForWindow:(NSWindow *)window;
+- (NSRect)statusRectInScreenRect:(NSRect *)outScreenRect;
 
 @end
