@@ -33,6 +33,5 @@
 
 - (void)openPanel;
 - (void)closePanel;
-- (NSRect)statusRectInScreenRect:(NSRect *)outScreenRect;
 
 @end
