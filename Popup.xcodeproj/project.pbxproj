@@ -188,6 +188,9 @@
 /* Begin PBXProject section */
 		DD4F7BFB13C30F9F00825C6E /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
 			buildConfigurationList = DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "Popup" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -298,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Popup/Popup-Prefix.pch";
 				INFOPLIST_FILE = "Popup/Popup-Info.plist";
@@ -310,6 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Popup/Popup-Prefix.pch";
 				INFOPLIST_FILE = "Popup/Popup-Info.plist";
