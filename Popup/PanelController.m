@@ -51,11 +51,6 @@
     [panel setOpaque:NO];
     [panel setBackgroundColor:[NSColor clearColor]];
     
-    // Resize panel
-    NSRect panelRect = [[self window] frame];
-    panelRect.size.height = POPUP_HEIGHT;
-    [[self window] setFrame:panelRect display:NO];
-    
     // Follow search string
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
 }
@@ -197,6 +192,7 @@
 
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
+    panelRect.size.height = POPUP_HEIGHT;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
