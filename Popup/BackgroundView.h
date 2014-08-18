@@ -3,9 +3,12 @@
 
 @interface BackgroundView : NSView
 {
+@private
     NSInteger _arrowX;
+    NSBezierPath* _path;
 }
 
 @property (nonatomic, assign) NSInteger arrowX;
+@property (nonatomic, retain) NSBezierPath* path;
 
 @end
